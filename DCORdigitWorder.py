@@ -21,6 +21,11 @@ def talk(digt):
     else:
         err("Oh oh! Enter appropriate digits please.")
         return ""
+def talkNoZero(val,func):
+    if(str(func(val)).strip()=='zero'):
+        return ""
+    else:
+        return func(val)
 def talkAfterPoint(digt):
     # To talk the decimal fractions 
     # e.g .234= point two three four
@@ -54,6 +59,8 @@ def talkNoDot(digt):
         return isNegative+talkGTeTLM(d)
     elif (dC>=1000000 and (len(d)>6 and len(d)<=9)):
         return isNegative+talkGTeMLTB(d)
+    elif(dC>=1000000000 and len(d)<=12):
+        return isNegative+talkGTeBLTT(d)
 def talkLTw(digt):
     #digt less than 20
     return digitWord[int(digt)]
@@ -121,11 +128,19 @@ def talkGTeTLM(digt):
 def talkGTeMLTB(digt):
     # digt>=1,000,000, and less than 1,000,000,000
     d=str(int(digt))
-    if(int(d[len(d)-5:len(d)-4])==0):
+    if(int(d[len(d)-5:len(d)-4])==0 and int(d[len(d)-6:len(d)])>0):
         And="and "
     else:
         And=""
-    return talk(d[0:len(d)-6])+" million "+And+talk(d[len(d)-6:len(d)])
+    return talk(d[0:len(d)-6])+" million "+And+talkNoZero(d[len(d)-6:len(d)],talk)
+def talkGTeBLTT(digt):
+    # digt >=1,000,000,000, and less than 1,000,000,000,000
+    d=str(int(digt))
+    if(len(str(int(d[len(d)-9:len(d)])))<=2 and int(d[len(d)-9:len(d)])>0):
+        And="and "
+    else:
+        And=""
+    return talk(d[0:len(d)-9])+" billion "+And+talkNoZero(d[len(d)-9:len(d)],talk)
 class digitWorder:
     """.
 =========================================================           
