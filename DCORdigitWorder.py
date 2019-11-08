@@ -132,6 +132,8 @@ class digitWorder:
 =========================================================           
                DCORdigitWorder
 
+#GitHub: https://github.com/Chubasamuel/DCORdigitWorder/
+
 A python script that converts digits to words
 
 > Input value can be negative or positive, 
