@@ -1,6 +1,8 @@
 # DCORdigitWorder
 A python script that converts digits to words
 
+## Interface: CLI
+
 > Input value can be negative or positive, 
 > and can be whole number or decimal fraction.
 > Input can be passed as string or number
