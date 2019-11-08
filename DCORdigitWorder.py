@@ -2,7 +2,6 @@
 GitHub: https://github.com/Chubasamuel/DCORdigitWorder/
 """
 import re
-from time import sleep
 
 cgreen="\33[32m";
 cend="\033[m";
