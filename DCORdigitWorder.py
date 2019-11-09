@@ -61,6 +61,10 @@ def talkNoDot(digt):
         return isNegative+talkGTeMLTB(d)
     elif(dC>=1000000000 and len(d)<=12):
         return isNegative+talkGTeBLTT(d)
+    elif(dC>=1000000000000 and len(d)<=15):
+        return isNegative+talkGTeTLTQd(d)
+    elif(dC>=1000000000000000 and len(d)<=18):
+        return isNegative+talkGTeQdLTQn(d)
 def talkLTw(digt):
     #digt less than 20
     return digitWord[int(digt)]
@@ -141,6 +145,21 @@ def talkGTeBLTT(digt):
     else:
         And=""
     return talk(d[0:len(d)-9])+" billion "+And+talkNoZero(d[len(d)-9:len(d)],talk)
+def talkGTeTLTQd(digt):
+    # digt>=Trillion, and < Quadrillion
+    d=str(int(digt))
+    if(len(str(int(d[len(d)-12:len(d)])))<=2 and int(d[len(d)-12:len(d)])>0):
+        And="and "
+    else:
+        And=""
+    return talk(d[0:len(d)-12])+" trillion "+And+talkNoZero(d[len(d)-12:len(d)],talk)
+def talkGTeQdLTQn(digt):
+    d=str(int(digt))
+    if(len(str(int(d[len(d)-15:len(d)])))<=2 and int(d[len(d)-15:len(d)])>0):
+        And="and "
+    else:
+        And=""
+    return talk(d[0:len(d)-15])+" quadrillion "+And+talkNoZero(d[len(d)-15:len(d)],talk)
 class digitWorder:
     """.
 =========================================================           
@@ -155,7 +174,7 @@ A python script that converts digits to words
 > Input can be passed as string or number
 
 ## Usage
-
+i
 from DCORdigitWorder import digitWorder as dw
 print(dw.word(-123456))
 print(dw.word(234.55))
